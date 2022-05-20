@@ -12,7 +12,7 @@ def execution():
   #### Configuration
   window = tk.Tk()
   window.title("traitement image")
-  window.geometry("360x140")
+  window.geometry("300x140")
   window.config(background='#42B79F')
   window.resizable(width=False,height=False)
   #### Configuration
