@@ -1,0 +1,44 @@
+n'oublie pas de ctrl+f et rechercher "NOTE" 
+
+URGENT # commenter le code, il commence à devenir chargé
+URGENT # agencer les repertoires, l'accumulation des fichiers .py dans le dossier principal est nuisible
+
+TODO interface.py - général       # permettre la lecture des fichiers png
+TODO interface.py - général       # permettre un affichage adaptatif des images et de l'affichage selon la taille de l'écran
+TODO interface.py - général       # déplacer les actions du bas de l'écran vers un menu déroulant en vu de pouvoir ajouter des fonctionnalités 
+TODO settings.py  - général       # création d'un fichier settings en vu d'implementer des paramètres utilisateurs
+TODO settings.txt - général       # voir au dessus
+TODO interface.py - général       # permettre à l'utilisateur de passer à la photo suivante par ordre alphabétique au lieu de devoir fermer et changer de nom manuellement
+TODO trace_profil.py - général    # fusionner les fonctionnalités du fichier.py avec le logiciel
+
+----------------------------------------------------------------------------------
+
+OK 20/05 - calculs.py - HSL       # suppression des instructions n'étant pas des fonctions pour épurer le fichier : les fonctions liées au traitement d'image n'ont pas été supprimées, peut-être incorporer dans le futur de nombreuses fonctionnalités traitement image comme photoshop
+OK 20/05 - main.py - général      # création du fichier main.py : il était temps !
+
+OK 01/05 - trace_profil.py général# Création du fichier .py dans le but de tracer DIRECTEMENT le pointage : seul le fichier est crée, il reste à le lier avec les fonctions des autres fichiers .py pour le rendre utilisable.
+
+OK 21/04 - calculs.py - HSL       # Ecriture du script nécéssaire pour éxécuter le traitement d'image gris : non incorporé dans l'interface graphique car son utilisation semble trop spécifique pour servir à nouveau
+OK 21/04 - calculs.py - HSL       # Ajout des fonctions "gris" et "calcul_taux_pixel_blanc" : le but ici est de calculer l'intensité lumineuse d'une image. Pour l'HSL cela sera utile pour calculer le taux d'oxygénation d'un ressaut
+OK 21/04 - interface.py - général # Création du bouton "Position" : en vue de réaliser un pointage.
+
+OK 15/04 - interface.py - HSL     # Lier les nouveaux et anciens boutons aux mises à jour des nouvelles fonctions du fichier calcul.py : aucun bug n'est noté NOTE : La partie sécurité n'a pas été faite
+OK 15/04 - calcul.py - HSL        # Adapter les fonctions "produit_scalaire", "norme" et "calcul_angle" aux nouvelles fonctionnalités prévues : prendre en compte le paramètre de calibrage, la norme suffit à calculer une longueur.
+OK 15/04 - interface.py - HSL     # Création des boutons "Distance" et "Calibrer" : en vue de mesurer des longueurs, la distance par défaut étant le pixel il est nécéssaire de calibrer à partir de deux points pour avoir des valeurs en USI. 
+
+OK 31/03 - dossier pycture        # Premier remaniement des repertoires : création d'un dossier img et d'un dossier out en prévision de prochaines fonctionnalités : le code étant prêt à être utilisé, stocker les images d'entrée dans le dossier principal serait nuisible NOTE : les fichiers .py n'ont pas été bougés pour l'instant car il faudrait remodifier les liens d'imports.
+
+OK 27/03 - calculs.py - général   # Voir en dessous
+OK 27/03 - interface.py - général # Fin de la mise en indépendance de l'interface graphique/terminal/variables préinscrites dans le code : l'interface graphique s'auto-suffit lors du lancement
+OK 27/03 - interface.py - général # Mise en marche de l'indicateur de mesure : l'utilisation du bouton angle renvoie bien la valeur calculée
+OK 27/03 - interface.py - général # Mise en marche du champ de texte pour rentrer le nom de la photo : la photo s'ouvre et les fonctionnalitées précédentes ne rencontrent aucun bug
+
+OK 20/03 - interface.py - général # Créer la fenêtre principale : celle-ci devra contenir un champ de texte pour rentrer le nom de la photo à charger, un bouton ouvrir et un indicateur de mesure (pour l'instant du texte)
+OK 20/03 - interface.py - général # Créer le bouton qui efface les points déjàs crées : réinitialise la liste des coordonnées des points et les effaces visuelement.
+OK 20/03 - interface.py - général # Capturer les coordonnées des points crées par les clicks : dans une liste, variable globale.
+OK 20/03 - interface.py - PIP     # Créer le bouton angle : le bouton calcule le demi angle entre trois points. NOTE : La partie sécurité (nécéssité d'avoir trois points par ex) n'a pas été faite
+
+OK 14/03 - interface.py -général  # Pouvoir cliquer sur l'image : laisser un marqueur visible pour aider au pointage, NOTE : les clics sont juste visuels et leur positions ne sont pour l'instant pas enregistrées
+OK 14/03 - interface.py - général # Premiers élèments d'interface graphique : bouton quitter, laisser de la place en bas pour de futurs boutons
+OK 14/03 - calculs.py - général   # Créer la partie mathématique : calcul d'angle (à partir du produit scalaire). Fonctions créées : "produit_scalaire", "norme", "calcul_angle"
+OK 14/03 - interface.py - général # Pouvoir lire une image : pas d'interface graphique pré-image, les paramètres se modifient dans le code pour l'instant
