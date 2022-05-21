@@ -6,6 +6,6 @@ pour lancer le code :
 pour bien utiliser le code :
 -l'image à traiter DOIT être dans le fichier "img"
 -rentrer dans le premier champ le nom de l'image (l'image doit être au format jpg !!!!)
--une fenetre s'ouvre avec l'image chargée, y placer les trois points puis calculer ! 
+-une fenetre s'ouvre avec l'image chargée
 
-l'angle s'affiche en dessous du bouton lancer
+Enjoy !
