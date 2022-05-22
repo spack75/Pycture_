@@ -1,6 +1,5 @@
 n'oublie pas de ctrl+f et rechercher "NOTE" 
 
-URGENT # commenter le code, il commence à devenir chargé
 URGENT # agencer les repertoires, l'accumulation des fichiers .py dans le dossier principal est nuisible
 
 TODO interface.py - général       # permettre la lecture des fichiers png
@@ -12,6 +11,8 @@ TODO interface.py - général       # permettre à l'utilisateur de passer à la
 TODO trace_profil.py - général    # fusionner les fonctionnalités du fichier.py avec le logiciel
 
 ----------------------------------------------------------------------------------
+
+OK 22/05 - tous fichiers - général# commenter le code : maintenant compréhensible par tous
 
 OK 20/05 - calculs.py - HSL       # suppression des instructions n'étant pas des fonctions pour épurer le fichier : les fonctions liées au traitement d'image n'ont pas été supprimées, peut-être incorporer dans le futur de nombreuses fonctionnalités traitement image comme photoshop
 OK 20/05 - main.py - général      # création du fichier main.py : il était temps !

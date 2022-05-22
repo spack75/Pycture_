@@ -57,6 +57,7 @@ def gris(img_name_in, img_name_out):
     -----
     entrée :
     img_name_in :: str /// L'image de couleur à convertir
+    img_name_out :: str /// L'image d'entrée en nucances de gris
     -----
     retour :
     img_name_out :: str /// L'image d'entrée en nucances de gris
