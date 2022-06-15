@@ -21,11 +21,14 @@ def execution():
   Rien
   """
   ##### Configuration #####
-  window = tk.Tk()                            # commande de creation d'application
-  window.title("traitement image")            # titre de l'application
-  window.geometry("300x140")                  # taille de la fenetre
-  window.config(background='#42B79F')         # couleur de fond de la fenetre
-  window.resizable(width=False,height=False)  # la fenetre a une taille fixe
+
+  window = tk.Tk()                                 # commande de creation d'application
+  xscreen = int(window.winfo_screenwidth())   # obtention de la longueur de l'écran
+  yscreen = int(window.winfo_screenheight())  # obtention de la largeur de l'écran
+  window.title("traitement image")                 # titre de l'application
+  window.geometry("300x140")                       # taille de la fenetre
+  window.config(background='#42B79F')              # couleur de fond de la fenetre
+  window.resizable(width=False,height=False)       # la fenetre a une taille fixe
   ##### Configuration #####
   
   
@@ -47,12 +50,48 @@ def execution():
 
     ##### déclaration des variables #####
     posx    = []                                                                   # liste des positions x des clicks
-    posy    = []                                                                   # liste des positions y des clicks
-    LARGEUR = 450                                                                  # largeur de la fenetre
-    HAUTEUR = 600                                                                  # hauteur de la fenetre
-    img     = Image.open('img/'+nomformat.get()+'.jpg')                            # chargement de l'image d'entrée
-    im      = img.resize((450, 600))                                               # adaptation des dimensions de l'image à celles de la fenetre
-    image   = tk.Toplevel(window)                                                  # creation de la fenetre de traitement de l'image
+    posy    = []                                                                   # liste des positions y des clicks 
+    img     = Image.open('img/'+nomformat.get())                                   # chargement de l'image d'entrée
+    xphoto = img.size[0]                                                           # longueur de la photo
+    yphoto = img.size[1]                                                           # largeur de la photo
+    xratio = xphoto/xscreen                                                        # rapport d'aspect selon x
+    yratio = yphoto/yscreen                                                        # rapport d'aspect selon y
+    if (xphoto > xscreen) and (yphoto > yscreen): # s'il y aurait un dépassement (selon x ET y) de l'écran dans le cas où on afficherait la photo sans modification des dimensions
+
+      if xratio > yratio: # si ce dépassement est le plus important selon x
+        LONGUEUR = xscreen               # plus grande longueur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+        LARGEUR  = int(yphoto / xratio)  # plus grande largeur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+
+      else: # si ce dépassement est le plus important selon y
+        LONGUEUR = int(xphoto / yratio)  # plus grande longueur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+        LARGEUR  = yscreen               # plus grande largeur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+
+    elif (xphoto > xscreen): # s'il y aurait un dépassement seulement selon x de l'écran dans le cas où on afficherait la photo sans modification des dimensions
+
+        LONGUEUR = xscreen               # plus grande longueur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+        LARGEUR  = int(yphoto / xratio)  # plus grande largeur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+
+    elif (yphoto > yscreen): # s'il y aurait un dépassement seulement selon y de l'écran dans le cas où on afficherait la photo sans modification des dimensions
+
+        LONGUEUR = int(xphoto / yratio)  # plus grande longueur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+        LARGEUR  = yscreen               # plus grande largeur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+
+    else: # s'il n'y aurait aucun dépassement de l'écran dans le cas où on afficherait la photo sans modification des dimensions (et que l'on veut rendre l'image la plus grande possible)
+
+      if xphoto > yphoto: # si l'aspect le plus grand est selon x
+
+        LONGUEUR = xscreen               # plus grande longueur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+        LARGEUR  = int(yphoto / xratio)  # plus grande largeur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+
+      else: # si l'aspect le plus grand est selon y
+
+        LONGUEUR = int(xphoto / yratio)  # plus grande longueur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+        LARGEUR  = yscreen               # plus grande largeur possible telle que l'on ne retrouve pas de dépassement lors du chargement de la photo
+
+    im      = img.resize((int(LONGUEUR*0.9), int(LARGEUR*0.9))) # adaptation des dimensions de l'image à celles de la fenetre
+    im.save("test.jpg")
+    image   = tk.Toplevel(window)             # creation de la fenetre de traitement de l'image
+    image.geometry(f"{xscreen}x{yscreen}")
     ##### déclaration des variables #####
 
 
@@ -154,21 +193,34 @@ def execution():
 
 
     ##### surface de dessin #####
-    surface_dessin = tk.Canvas(image, width = LARGEUR, height = HAUTEUR)           # création de la surface de l'image
+    surface_dessin = tk.Canvas(image, width = LONGUEUR*0.9, height = LARGEUR*0.9)          # création de la surface de l'image
     surface_dessin.image = ImageTk.PhotoImage(im)                                  # chargement de l'image
     surface_dessin.create_image(0, 0,  image=surface_dessin.image, anchor= tk.NW)  # affichage de l'image
-    surface_dessin.pack(padx = 5, pady = 5)                                        # placement de l'image
+    surface_dessin.pack()#padx = 5, pady = 5)                                        # placement de l'image
     surface_dessin.bind('<Button-1>',clic)                                         # affectation du click à la fonction clic
     ##### surface de dessin #####
 
-
+    def rien():
+      print("je fais pas grand chose")
     ##### boutons #####
-    tk.Button(image, text = 'Effacer', command = effacer).pack(side = tk.LEFT,padx = 5,pady = 5)          # Création d'un widget Button (bouton Effacer)
-    tk.Button(image, text = 'Angle', command = angle_calc).pack(side = tk.LEFT,padx = 5,pady = 5)         # Création d'un widget Button (bouton Angle)
-    tk.Button(image, text = 'Distance', command = distance_calc).pack(side = tk.LEFT,padx = 5,pady = 5)   # Création d'un widget Button (bouton Distance)
-    tk.Button(image, text = 'Calibrer', command = calibrage_calc).pack(side = tk.LEFT,padx = 5,pady = 5)  # Création d'un widget Button (bouton Calibrage)
-    tk.Button(image, text = 'Position', command = position_calc).pack(side = tk.LEFT,padx = 5,pady = 5)   # Création d'un widget Button (bouton Calibrage)
-    tk.Button(image, text = 'Quitter', command = image.destroy).pack(side = tk.LEFT,padx = 5,pady = 5)    # Création d'un widget Button (bouton Quitter)
+    menubar = tk.Menu(image)
+    sysmenu = tk.Menu(menubar, tearoff=0)
+    sysmenu.add_command(label="Changer d'image", command=image.destroy)
+    sysmenu.add_command(label="Quitter", command=window.destroy)
+    sysmenu.add_separator()
+    sysmenu.add_command(label="Effacer les points placés", command=effacer)
+    sysmenu.add_command(label="Sauvegarder les positions des points placés", command=position_calc)
+    menubar.add_cascade(label="Fichier", menu=sysmenu)
+
+    calcmenu = tk.Menu(menubar, tearoff=0)
+    calcmenu.add_command(label="Calibrer l'échelle de longueur", command=calibrage_calc)
+    calcmenu.add_separator()
+    calcmenu.add_command(label="Calculer une distance", command=distance_calc)
+    calcmenu.add_command(label="Calculer un angle", command=angle_calc)
+    menubar.add_cascade(label="Fichier", menu=calcmenu)
+
+
+    image.config(menu=menubar)
   ##### fonction associee au bouton lancer #####
 
   ##### boutons #####

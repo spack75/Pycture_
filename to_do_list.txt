@@ -2,10 +2,8 @@ n'oublie pas de ctrl+f et rechercher "NOTE"
 
 URGENT # agencer les repertoires, l'accumulation des fichiers .py dans le dossier principal est nuisible
 
-EN COURS interface.py - général      # permettre la lecture des fichiers png
+EN COURS 
 
-TODO interface.py - général          # permettre un affichage adaptatif des images et de l'affichage selon la taille de l'écran
-TODO interface.py - général          # déplacer les actions du bas de l'écran vers un menu déroulant en vu de pouvoir ajouter des fonctionnalités 
 TODO settings.py  - général          # création d'un fichier settings en vu d'implementer des paramètres utilisateurs
 TODO settings.txt - général          # voir au dessus
 TODO interface.py - général          # permettre à l'utilisateur de passer à la photo suivante par ordre alphabétique au lieu de devoir fermer et changer de nom manuellement
@@ -13,9 +11,14 @@ TODO trace_profil.py - général       # fusionner les fonctionnalités du fichi
 
 ----------------------------------------------------------------------------------
 
-OK 22/05 - calculs.py - général      # commenter le code : maintenant compréhensible par tous
-OK 22/05 - main.py - général         # commenter le code : maintenant compréhensible par tous
-OK 22/05 - interface.py - général    # commenter le code : maintenant compréhensible par tous
+OK 14/06 - interface.py - général    # déplacer les actions du bas de l'écran vers un menu déroulant en vu de pouvoir ajouter des fonctionnalités : les boutons ont été supprimés, le menu a été ajouté en haut.
+OK 14/06 - interface.py - général    # permettre un affichage adaptatif des images et de l'affichage selon la taille de l'écran : une image prendra tout l'écran, on peut réduire l'écran mais il n'y aura pas de dézoom ou de zoom
+
+OK 07/06 - interface.py - général    # permettre la lecture des fichiers png : maintenant il faut specifier le format du fichier d'entrée.
+
+OK 22/05 - calculs.py - général      # commenter le code : maintenant compréhensible par tous.
+OK 22/05 - main.py - général         # commenter le code : maintenant compréhensible par tous.
+OK 22/05 - interface.py - général    # commenter le code : maintenant compréhensible par tous.
    
 OK 20/05 - calculs.py - HSL          # suppression des instructions n'étant pas des fonctions pour épurer le fichier : les fonctions liées au traitement d'image n'ont pas été supprimées, peut-être incorporer dans le futur de nombreuses fonctionnalités traitement image comme photoshop
 OK 20/05 - main.py - général         # création du fichier main.py : il était temps !
